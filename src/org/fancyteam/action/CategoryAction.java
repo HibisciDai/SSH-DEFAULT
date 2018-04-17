@@ -7,12 +7,12 @@ import org.fancyteam.service.CategoryService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-
-@Controller("categoryAction") //即 spring 管理的bean的id值
+@Controller("categoryAction")
+// 即 spring 管理的bean的id值
 @Scope("prototype")
 public class CategoryAction extends BaseAction<Category> {
 
-     @Resource
+	@Resource
 	private CategoryService categoryService;
 
 	public void setCategoryService(CategoryService categoryService) {
@@ -26,22 +26,24 @@ public class CategoryAction extends BaseAction<Category> {
 	}
 
 	public String save() {
-		  System.out.println("----save----");  
-	       categoryService.save(model);; //直接使用model  
-	        return "index";  
+		System.out.println("----save----");
+		categoryService.save(model);
+		; // 直接使用model
+		return "index";
 	}
+
 	public String delete() {
-		  System.out.println("----save----");  
-	       categoryService.delete(model.getId()); //直接使用model  
-	        return "index";  
+		System.out.println("----save----");
+		categoryService.delete(model.getId()); // 直接使用model
+		return "index";
 	}
 
 	public String query() {
-		 List<Category> list=categoryService.query();
+		List<Category> list = categoryService.query();
 		request.put("categoryList", list);
 		session.put("categoryList", list);
 		application.put("categoryList", list);
 		return "index";
 	}
-   
+
 }

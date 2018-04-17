@@ -21,13 +21,16 @@ public class TestHibernate {
 	 * CategoryService categoryService = new CategoryServiceImpl(); Category
 	 * category = new Category("男士休闲", true); categoryService.save(category); }
 	 */
-    @Resource
-	private CategoryService  CategoryServiceImpl;
 	@Resource
-	private CategoryDao  categoryDaoImpl;
-	@Test // 测试Hibernate和Spring整合后
+	private CategoryService CategoryServiceImpl;
+	@Resource
+	private CategoryDao categoryDaoImpl;
+
+	@Test
+	// 测试Hibernate和Spring整合后
 	public void hibernateAndSpring() {
-//		categoryDaoImpl.add(new Category( "22女式", true)); // categoryService通过Spring从上面注入进来的
-	 System.out.println(  CategoryServiceImpl.get(1));
+		// categoryDaoImpl.add(new Category( "22女式", true)); //
+		// categoryService通过Spring从上面注入进来的
+		System.out.println(CategoryServiceImpl.get(1));
 	}
 }

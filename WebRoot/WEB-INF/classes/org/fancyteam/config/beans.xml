@@ -66,19 +66,19 @@
 	<!-- 测试 开始 -->
 
 	<bean id="date" class="java.util.Date"></bean>
-	
+
 	<!-- BaseDoImpl配置 -->
 	<bean id="baseDaoImpl" class="org.fancyteam.dao.impl.BaseDaoImpl">
-		<constructor-arg type="java.lang.Class" value="org.fancyteam.entity.Category"/>
+		<constructor-arg type="java.lang.Class" value="org.fancyteam.entity.Category" />
 	</bean>
-	
+
 	<!-- categoryDaoImpl配置 -->
 	<bean id="categoryDaoImpl" class="org.fancyteam.dao.impl.CategoryDaoImpl">
 	</bean>
-	
+
 	<!-- categoryServiceImpl配置 -->
 	<bean id="categoryServiceImpl" class="org.fancyteam.service.impl.CategoryServiceImpl">
 	</bean>
-	
-	<context:component-scan base-package="org.fancyteam.."/>  
+
+	<context:component-scan base-package="org.fancyteam.." />
 </beans>

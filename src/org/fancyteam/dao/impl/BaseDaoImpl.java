@@ -16,7 +16,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	private Class clazz; // 存储T
 	@Resource
-	private SessionFactory sessionFactory; 
+	private SessionFactory sessionFactory;
 
 	public BaseDaoImpl() {
 		super();
@@ -25,7 +25,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public BaseDaoImpl(Class clazz) {
 		this.clazz = clazz;
 	}
-	
+
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -36,13 +36,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public void update(T t, Serializable id ){
+	public void update(T t, Serializable id) {
 		Session session = getSession();
-//		Object obj = session.get(clazz, id);
-//		obj = t ;
+		// Object obj = session.get(clazz, id);
+		// obj = t ;
 		session.merge(t);
 		session.flush();
-//		session.saveOrUpdate(clazz.getSimpleName(),obj);
+		// session.saveOrUpdate(clazz.getSimpleName(),obj);
 	}
 
 	@Override
@@ -60,21 +60,21 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public T findById(Serializable id) {
-		return (T)getSession().get(clazz, id);
+		return (T) getSession().get(clazz, id);
 	}
 
 	@Override
 	public List<T> findPage(int pageIndex, int pageSize) {
-		Query query = getSession().createQuery("from "+clazz.getSimpleName());
-		query.setFirstResult((pageIndex-1)*pageSize);
+		Query query = getSession().createQuery("from " + clazz.getSimpleName());
+		query.setFirstResult((pageIndex - 1) * pageSize);
 		query.setMaxResults(pageSize);
-		return  query.list();
+		return query.list();
 	}
 
 	@Override
 	public List<T> findPageByHql(int pageIndex, int pageSize, String hql) {
 		Query query = getSession().createQuery(hql);
-		query.setFirstResult((pageIndex-1)*pageSize);
+		query.setFirstResult((pageIndex - 1) * pageSize);
 		query.setMaxResults(pageSize);
 		return query.list();
 	}
