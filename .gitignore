@@ -39,3 +39,6 @@ out/
 .settings/
 .metadata/
 .mymetadata
+
+# Hibernate
+.myhibernatedata
